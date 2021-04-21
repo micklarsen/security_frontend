@@ -2,7 +2,7 @@ const domain = "https://micklarsen.com/";
 /* const domain = "http://localhost:"; */
 
 const port = "8080/";
-const app = "3SEM_Security/";
+const app = "4SEM_Security/";
 
 
 /* LOCAL HOST DEV */
