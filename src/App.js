@@ -4,8 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import AllJokes from "./AllJokes";
 import AllScrape from "./AllScrape";
+import AllTopics from "./AllTopics";
 import Login from "./Login";
 import { Switch, Route, NavLink, useHistory } from "react-router-dom";
+import AllComments from "./Comments";
+
+
 
 const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
   return (
@@ -13,9 +17,15 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
       <Navbar bg="dark" variant="dark" id="header">
         <Navbar.Brand href="#home">Hold E, Gruppe 8</Navbar.Brand>
         <Nav className="mr-auto">
+
           <NavLink className="nav-link" exact activeClassName="selected" href="/" to="/">
             Home
         </NavLink>
+
+          <NavLink className="nav-link" exact activeClassName="selected" to="/topics">
+            Topics
+        </NavLink>
+
           <NavLink className="nav-link" activeClassName="selected" to="/jokes">
             Jokes
         </NavLink>
@@ -83,6 +93,12 @@ export default function App() {
           <Route exact path="/">
             <Home />
           </Route>
+          <Route exact path="/topics">
+            <Topics />
+          </Route>
+          <Route exact path="/comments">
+            <Comments/>
+          </Route>
           <Route path="/jokes">
             <Jokes />
           </Route>
@@ -113,6 +129,22 @@ function Home() {
   return (
     <div className="pageContent">
       <h2>Home</h2>
+    </div>
+  );
+}
+
+function Topics() {
+  return (
+    <div className="pageContent">
+      <AllTopics />
+    </div>
+  );
+}
+
+function Comments() {
+  return (
+    <div className="pageContent">
+      <AllComments />
     </div>
   );
 }

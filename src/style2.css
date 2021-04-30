@@ -1,3 +1,4 @@
+
 ul.header {
   list-style-type: none;
   margin: 0;
@@ -70,4 +71,30 @@ ul.header li span {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+}
+
+.topicContainer{
+  position: relative;
+  display: flex;
+  width: 80%;
+  margin-top: 4em;
+  justify-content: center;
+}
+
+#listbar{
+  display: block;
+}
+
+#listbar a{
+  font-size: 1.5em;
+  text-decoration: none;
+  color: black ;
+  text-align: left;
+  padding: 0;
+  margin-top: 1.4em;
+  margin-bottom: 0.5em;
+}
+
+.topicContainer  span{
+  font-size: 0.9em;
 }
