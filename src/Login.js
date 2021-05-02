@@ -6,7 +6,6 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 const recaptchaRef = React.createRef();
 
-
 function LogIn({ login }) {
   const init = { username: "", password: "" };
   const [loginCredentials, setLoginCredentials] = useState(init);
@@ -14,10 +13,11 @@ function LogIn({ login }) {
   const performLogin = (evt) => {
     evt.preventDefault();
 
-    //recaptchaRef.current.execute();
+    recaptchaRef.current.execute();
 
     login(loginCredentials.username, loginCredentials.password);
   }
+  
   const onChange = (evt) => {
     setLoginCredentials({ ...loginCredentials, [evt.target.id]: evt.target.value })
   }
@@ -34,6 +34,7 @@ function LogIn({ login }) {
 
 
               <ReCAPTCHA
+                ref={recaptchaRef}
                 sitekey="6Lf_WMMaAAAAAJNxTTRrA0bmDv5VVmzRzBIKYcWJ"
                 size="invisible"
                 onChange={onChange}
