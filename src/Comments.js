@@ -21,7 +21,12 @@ const Comments = () => {
 
 
     const fetchComments = () => {
-        fetch(allComments)
+        fetch( allComments, {headers:{
+            "content-type": "application/json",
+            "accept" : "application/json",
+            "x-access-token" : "",
+            "origin" : "http://localhost:3000"
+        }})
             .then(res => res.json())
             .then(data => {
                 let filter = [];
