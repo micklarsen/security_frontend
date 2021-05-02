@@ -2,7 +2,7 @@
 const domain = "http://localhost:";
 
 const port = "8080/";
-const app = "4SEM_Security";
+const app = "3_sem_eksamensprojekt";
 
 
 /* LOCAL HOST DEV */

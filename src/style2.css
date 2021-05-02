@@ -95,6 +95,10 @@ ul.header li span {
   margin-bottom: 0.5em;
 }
 
+/* #reCap-btn {
+  cursor: not-allowed;
+} */
+
 .topicContainer  span{
   font-size: 0.9em;
 }
