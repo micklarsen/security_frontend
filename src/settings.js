@@ -10,6 +10,7 @@ export const URL = domain + port + app;
 export const URLJokes = domain + port + app + "/api/jokes";
 export const URLScrapeSequential = domain + port + app + "/api/scrape/sequential";
 export const URLScrapeParallel = domain + port + app + "/api/scrape/parallel"; 
+export const allComments = domain + port + app + "/api/comments/all"; 
 
 /* LIVE ENVIRONMENT */
 /* export const URL = domain + app;

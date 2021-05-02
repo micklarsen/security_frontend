@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style2.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
-import AllJokes from "./AllJokes";
-import AllScrape from "./AllScrape";
+import { Navbar, Nav } from "react-bootstrap";
 import AllTopics from "./AllTopics";
 import Login from "./Login";
 import { Switch, Route, NavLink, useHistory } from "react-router-dom";
@@ -15,7 +13,7 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
   return (
     <>
       <Navbar bg="dark" variant="dark" id="header">
-        <Navbar.Brand href="#home">Hold E, Gruppe 8</Navbar.Brand>
+        <Navbar.Brand href="/">DAT4SEM Security</Navbar.Brand>
         <Nav className="mr-auto">
 
           <NavLink className="nav-link" exact activeClassName="selected" href="/" to="/">
@@ -24,10 +22,6 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
 
           <NavLink className="nav-link" exact activeClassName="selected" to="/topics">
             Topics
-        </NavLink>
-
-          <NavLink className="nav-link" activeClassName="selected" to="/jokes">
-            Jokes
         </NavLink>
 
           {isLoggedIn && (
@@ -80,7 +74,10 @@ export default function App() {
   };
 
   return (
+
+
     <div>
+
       <Header
         loginMsg={isLoggedIn ? "Logout" : "Login"}
         isLoggedIn={isLoggedIn}
@@ -97,13 +94,7 @@ export default function App() {
             <Topics />
           </Route>
           <Route exact path="/comments">
-            <Comments/>
-          </Route>
-          <Route path="/jokes">
-            <Jokes />
-          </Route>
-          <Route path="/scrape">
-            <Scrape />
+            <Comments />
           </Route>
           <Route path="/admin">
             <Admin />
@@ -129,6 +120,15 @@ function Home() {
   return (
     <div className="pageContent">
       <h2>Home</h2>
+      <p>Welcome to this humble site for discussions. <br />
+      In the <a href="/topics">topics</a> page you can participate in discussions within certain, pre-selected subjects.<br />
+      Please note, that a user is required in order to comment and post pictures (No other files allowed!)
+      </p>
+
+      {useEffect(() => {
+        console.warn("############################################################\nIf anyone told you to enter anything in here, don't! They are trying to scam you\n##############################################################")
+      }, [])}
+
     </div>
   );
 }
@@ -149,22 +149,6 @@ function Comments() {
   );
 }
 
-function Jokes() {
-  return (
-    <div className="pageContent">
-      <AllJokes />
-    </div>
-  );
-}
-
-function Scrape() {
-  return (
-    <div className="pageContent">
-      <AllScrape />
-    </div>
-  );
-}
-
 function Admin() {
   return (
     <div className="pageContent">
@@ -172,3 +156,4 @@ function Admin() {
     </div>
   );
 }
+
