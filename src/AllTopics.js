@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Button } from "react-bootstrap";
+import React from 'react';
+//import { Container, Row, Col, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import { Nav, Navbar } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 
 
-const imgURL = "http://localhost:8080/4SEM_Security/api/comments/4";
+//const imgURL = "http://localhost:8080/4SEM_Security/api/comments/4";
 
 
 
 
 const AllTopics = () => {
-
+   
     return (
         <div>
             <div className="topicContainer">
@@ -22,7 +22,7 @@ const AllTopics = () => {
                     <NavLink className="nav-link"
                         to={{
                             pathname: "/Comments",
-                            topicProp: { topicID: 1, topicName : "Politics", topicDescription: "A place to discuss politics! No fake news or the likes will be tolerated"  }
+                            topicProp: { topicID: 1, topicName: "Politics", topicDescription: "A place to discuss politics! No fake news or the likes will be tolerated" }
                         }}>
                         Topic 1: Politics
                 </NavLink>
@@ -39,7 +39,7 @@ const AllTopics = () => {
                     <NavLink className="nav-link"
                         to={{
                             pathname: "/Comments",
-                            topicProp: { topicID: 3, topicName: "Games",  topicDescription: "Gamer eh? Here you can discuss games, new and old. No \"PC Masterrace\" in here - Everyone is welcome"  }
+                            topicProp: { topicID: 3, topicName: "Games", topicDescription: "Gamer eh? Here you can discuss games, new and old. No \"PC Masterrace\" in here - Everyone is welcome" }
                         }}>
                         Topic 3: Games
                 </NavLink>

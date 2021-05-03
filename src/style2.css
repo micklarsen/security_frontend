@@ -143,8 +143,19 @@ ul.header li span {
 
 }
 
+.commentWrite {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  width: 80%;
+}
+
 .comment-img{
   align-self: center;
   width: 200px;
   height: auto;
+}
+
+a, a:active, a:focus{
+  outline: none;
 }
