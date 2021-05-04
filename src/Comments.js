@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { Form, Button, Col } from "react-bootstrap";
 import { allComments, deleteAComment, postAComment } from './settings'
 import facade from "./apiFacade";
-import imageToBase64 from 'image-to-base64/browser';
+//import imageToBase64 from 'image-to-base64/browser';
 // const imageToBase64 = require('image-to-base64');
 
 const Comments = ({ isLoggedIn, isAdmin }) => {
@@ -112,7 +112,7 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
 
     //Onchange function - Begin converting the image as soon as it is uploaoded
     const handleFile = (file) => {
-        fileReader = new FileReader
+        fileReader = new FileReader();
         fileReader.onloadend = handleFileRead;
         fileReader.readAsDataURL(file);
     }
@@ -201,6 +201,7 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
                                                 id="image"
                                                 accept=".jpeg, .png, .jpg"
                                                 aria-describedby="inputGroupFileAddon01"
+                                                onInput={(e) => setFileName(e.target.files[0].name)}
                                                 onChange={e => handleFile(e.target.files[0])}
                                             />
                                             <label className="custom-file-label" htmlFor="image">
