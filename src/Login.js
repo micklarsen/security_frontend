@@ -17,7 +17,7 @@ function LogIn({ login }) {
 
     login(loginCredentials.username, loginCredentials.password);
   }
-  
+
   const onChange = (evt) => {
     setLoginCredentials({ ...loginCredentials, [evt.target.id]: evt.target.value })
   }
@@ -41,11 +41,11 @@ function LogIn({ login }) {
               />
 
 
-              <Form.Group controlId="loginForm">
+              <Form.Group>
                 <Form.Label>Username</Form.Label>
                 <Form.Control type="text" id="username" placeholder="Enter username" />
               </Form.Group>
-              <Form.Group controlId="formBasicPassword">
+              <Form.Group >
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" id="password" placeholder="Enter password" />
               </Form.Group>

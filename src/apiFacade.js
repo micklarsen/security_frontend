@@ -44,8 +44,11 @@ function apiFacade() {
     var opts = {
       method: method,
       headers: {
-        "Content-type": "application/json",
-        Accept: "application/json",
+        "content-type": "application/json",
+        "authorization": "",
+        "accept" : "application/json",
+        "x-access-token" : "",
+        "origin" : "http://localhost:3000"
       },
     };
     if (addToken && loggedIn()) {
