@@ -24,11 +24,6 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
             Topics
         </NavLink>
 
-          {isLoggedIn && (
-            <NavLink className="nav-link" activeClassName="selected" to="/scrape" href="/scrape">
-              Scrape
-            </NavLink>
-          )}
           {isAdmin && (
             <>
               <li>
