@@ -107,6 +107,10 @@ ul.header li span {
   margin-top: 1.4em;
 }
 
+/* #reCap-btn {
+  cursor: not-allowed;
+} */
+
 .topicContainer  span{
   font-style: italic;
   font-size: 0.9em;
