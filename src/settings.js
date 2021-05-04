@@ -24,6 +24,6 @@ export const postAComment = domain + port + app + "/api/comments";
 /* LIVE ENVIRONMENT */
 export const URL = domain + app;
 export const allComments = domain + app + "/api/comments/all"; 
-export const deleteComment = domain + app + "/api/comments/delete/";
+export const deleteAComment = domain + app + "/api/comments/delete/";
 export const editAComment = domain + app + "";
 export const postAComment = domain + app + "/api/comments";
