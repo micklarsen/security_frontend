@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react"
 import facade from "./apiFacade";
 import { Form, Container, Row, Col, Button } from "react-bootstrap";
+import ReCAPTCHA from "react-google-recaptcha";
 
+
+const recaptchaRef = React.createRef();
 
 function LogIn({ login }) {
   const init = { username: "", password: "" };
@@ -9,15 +12,18 @@ function LogIn({ login }) {
 
   const performLogin = (evt) => {
     evt.preventDefault();
+
+    recaptchaRef.current.execute();
+
     login(loginCredentials.username, loginCredentials.password);
   }
+
   const onChange = (evt) => {
     setLoginCredentials({ ...loginCredentials, [evt.target.id]: evt.target.value })
   }
 
   return (
     <div>
-
       <Container>
         <Row>
           <Col>
@@ -25,11 +31,21 @@ function LogIn({ login }) {
           <Col>
             <h2>Login</h2>
             <Form onChange={onChange} className="mt-4">
-              <Form.Group controlId="loginForm">
+
+
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey="6Lf_WMMaAAAAAJNxTTRrA0bmDv5VVmzRzBIKYcWJ"
+                size="invisible"
+                onChange={onChange}
+              />
+
+
+              <Form.Group>
                 <Form.Label>Username</Form.Label>
                 <Form.Control type="text" id="username" placeholder="Enter username" />
               </Form.Group>
-              <Form.Group controlId="formBasicPassword">
+              <Form.Group >
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" id="password" placeholder="Enter password" />
               </Form.Group>
@@ -108,7 +124,7 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
         let name = parseJwtName(facade.getToken());
         setLoginStatus(true, name)
 
-        if (parseJwt(facade.getToken()) == "admin") {
+        if (parseJwt(facade.getToken()) === "admin") {
           setAdminStatus(true)
           header.classList.add("adminStyle");
         }
@@ -120,7 +136,6 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
         })
       });
   };
-
 
 
   return (
