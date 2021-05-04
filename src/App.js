@@ -24,11 +24,6 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
             Topics
         </NavLink>
 
-          {isLoggedIn && (
-            <NavLink className="nav-link" activeClassName="selected" to="/scrape" href="/scrape">
-              Scrape
-            </NavLink>
-          )}
           {isAdmin && (
             <>
               <li>
@@ -94,7 +89,10 @@ export default function App() {
             <Topics />
           </Route>
           <Route exact path="/comments">
-            <Comments />
+            <Comments
+              isLoggedIn={isLoggedIn}
+              isAdmin={isAdmin}
+            />
           </Route>
           <Route path="/admin">
             <Admin />
@@ -141,10 +139,13 @@ function Topics() {
   );
 }
 
-function Comments() {
+function Comments({ isLoggedIn, isAdmin }) {
   return (
     <div className="pageContent">
-      <AllComments />
+      <AllComments
+        isLoggedIn={isLoggedIn}
+        isAdmin={isAdmin}
+      />
     </div>
   );
 }
