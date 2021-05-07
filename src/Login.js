@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import facade from "./apiFacade";
 import { Form, Container, Row, Col, Button } from "react-bootstrap";
 import ReCAPTCHA from "react-google-recaptcha";
+import AddUser from "./AddUser"
 
 
 const recaptchaRef = React.createRef();
@@ -144,6 +145,8 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
         <>
           <LogIn login={login} />
           <p>{errorMessage}</p>
+          <br />
+          <AddUser />
         </>
       ) :
         (<div>
