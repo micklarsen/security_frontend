@@ -31,7 +31,7 @@ const AddUser = () => {
       })
     };
 
-    fetch(url2, options)
+    fetch(addFriend, options)
       .then(handleHttpErrors)
       .then((res) => {
         console.log(res);
