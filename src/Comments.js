@@ -36,7 +36,7 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
                 "content-type": "application/json",
                 "accept": "application/json",
                 "x-access-token": "",
-                "origin": "http://localhost:3000"
+                "origin": "https://dat4semsecurity.surge.sh"
             }
         })
             .then(res => res.json())
@@ -84,7 +84,7 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
                 //'Content-Type': 'multipart/form-data',
                 //'X-Requested-With': 'XMLHttpRequest',
                 "x-access-token": "",
-                "origin": "http://localhost:3000"
+                "origin": "https://dat4semsecurity.surge.sh"
             },
             body: JSON.stringify({
                 userComment: document.getElementById("Comment").value,
