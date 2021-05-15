@@ -24,6 +24,7 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
 
     const [filteredComments, setFilteredComments] = useState(null);
     const [fileName, setFileName] = useState("Choose image");
+    const [fileError, setFileError] = useState('');
 
     useEffect(() => {
         fetchComments();
@@ -76,6 +77,7 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
 
     const submitComment = (evt) => {
         evt.preventDefault();
+        setFileError('');
         let options = {
             method: "POST",
             headers: {
@@ -85,6 +87,7 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
                 //'X-Requested-With': 'XMLHttpRequest',
                 "x-access-token": "",
                 "origin": "https://dat4semsecurity.surge.sh"
+
             },
             body: JSON.stringify({
                 userComment: document.getElementById("Comment").value,
@@ -108,10 +111,19 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
     const handleFileRead = (e) => {
         finishedImage = fileReader.result;
     }
-    
+
 
     //Onchange function - Begin converting the image as soon as it is uploaoded
     const handleFile = (file) => {
+        setFileError(''); // reset errormessage
+        if (!(file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg')) {
+            setFileError('Only jpeg/jpg and png files are allowed!');
+            return;
+        }
+        if (file.size >= 2000000) { // 2 megabyte
+            setFileError('The file is to big. Max size is 2 mb.');
+            return;
+        }
         fileReader = new FileReader();
         fileReader.onloadend = handleFileRead;
         fileReader.readAsDataURL(file);
@@ -129,7 +141,7 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
             { filteredComments != null ?
 
                 filteredComments.map((data) =>
-                    <div>
+                    <div key={data.id}>
                         <div>
                             {(isAdmin) ?
                                 <Button onClick={(e) => {
@@ -149,7 +161,7 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
                                 </Button>
                                 : ''}
                         </div>
-                        <div className="commentCard" key={data.id}>
+                        <div className="commentCard">
                             <i><span className="comment-username">{data.userName} posted on {data.created}</span></i>
                             <p className="comment-text">{data.userComment}</p>
                             <img className="comment-img" src={data.imageID} alt=""></img>
@@ -212,6 +224,13 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
                                 </Col>
                             </Form.Row>
                         </Form>
+                        {!!fileError ? (
+                            <div className="alert alert-danger text-center mt-4" role="alert">
+                                {fileError}
+                            </div>
+                        ) : (
+                            ""
+                        )}
                     </div>
                 ) : (
                     <div>
