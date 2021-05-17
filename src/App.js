@@ -119,7 +119,9 @@ function Home() {
     <div className="pageContent">
       <h2>Home</h2>
       <p>Welcome to this humble site for discussions. <br />
-      In the <a href="/topics">topics</a> page you can participate in discussions within certain, pre-selected subjects.<br />
+      In the <NavLink exact activeClassName="selected" to="/topics">
+            topics
+        </NavLink> page you can participate in discussions within certain, pre-selected subjects.<br />
       Please note, that a user is required in order to comment and post pictures (No other files allowed!)
       </p>
 
