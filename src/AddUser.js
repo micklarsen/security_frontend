@@ -1,6 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Container, Row, Col, Button } from "react-bootstrap";
-import { URL, addFriend, url2 } from "./settings";
+import { headerOrigin, addFriend } from "./settings";
+const owaspPasswordChecker = require('owasp-password-strength-test');
+
+owaspPasswordChecker.config({
+  allowPassphrases: true,
+  maxLength: 128,
+  minLength: 10,
+  minPhraseLength: 20,
+  minOptionalTestsToPass: 4,
+})
+
+
+//Disable password submit
+//check the password on useEffect
+//Output any errors
+//Enable the submit if there are no errors
+
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -10,8 +26,27 @@ function handleHttpErrors(res) {
 }
 
 const AddUser = () => {
+
   const [errorMessage, setErrorMessage] = useState("");
   const [userCreated, setUserCreated] = useState("");
+  const [addUserButton, setUserButtonDisabled] = useState("true");
+  let [passwordErrors, setPasswordErrors] = useState([]);
+
+
+  const checkPassword = () => {
+    let pwd = document.getElementById("passwordField").value;
+/* DEBUG */ console.log(pwd);
+    let pwdCheck = owaspPasswordChecker.test(pwd);
+    setPasswordErrors(pwdCheck.errors);
+/* DEBUG  */console.log("pw length: " + pwd.length);
+/* DEBUG  */console.log("error length: " + passwordErrors.length);
+    if (passwordErrors.length >= 1 || pwd.length < 10) {
+      setUserButtonDisabled("true");
+/* DEBUG */ console.log(passwordErrors);
+    } else if (passwordErrors.length < 1 && pwd.length >= 10) {
+      setUserButtonDisabled(""); //Empty means enabled
+    }
+  }
 
   const perfomAddUser = (evt) => {
     evt.preventDefault();
@@ -20,7 +55,9 @@ const AddUser = () => {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "x-access-token": "",
+        "origin": + headerOrigin
       },
       body: JSON.stringify({
         email: document.getElementById("userName").value,
@@ -46,8 +83,7 @@ const AddUser = () => {
         });
       });
   };
-  console.log("err: " + errorMessage);
-  console.log("userCreated: " + userCreated);
+
   return (
     <div>
       <Container>
@@ -67,9 +103,9 @@ const AddUser = () => {
                 <Form.Label className="ca3White">Username (email)</Form.Label>
                 <Form.Control type="text" placeholder="Enter username" />
               </Form.Group>
-              <Form.Group controlId="userPassword">
+              <Form.Group id="userPassword">
                 <Form.Label className="ca3White">Password</Form.Label>
-                <Form.Control type="password" placeholder="Enter password" />
+                <Form.Control id="passwordField" onKeyUp={checkPassword} type="password" placeholder="Enter password" />
               </Form.Group>
 
               <Form.Group controlId="userPhone">
@@ -87,7 +123,7 @@ const AddUser = () => {
                 <Form.Control type="text" placeholder="Enter last name" />
               </Form.Group>
 
-              <Button onClick={perfomAddUser} variant="primary" type="submit">
+              <Button onClick={perfomAddUser} id="addUserButton" disabled={addUserButton} variant="primary" type="submit">
                 Submit
               </Button>
             </Form>

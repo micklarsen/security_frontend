@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'
 import { Form, Button, Col } from "react-bootstrap";
-import { allComments, deleteAComment, postAComment } from './settings'
+import { headerOrigin, allComments, deleteAComment, postAComment } from './settings'
 import facade from "./apiFacade";
 //import imageToBase64 from 'image-to-base64/browser';
 // const imageToBase64 = require('image-to-base64');
@@ -27,7 +27,24 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
     const [fileError, setFileError] = useState('');
 
     useEffect(() => {
-        fetchComments();
+        fetch(allComments, {
+            headers: {
+                "content-type": "application/json",
+                "accept": "application/json",
+                "x-access-token": "",
+                "origin": + headerOrigin
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                let filter = [];
+                data.all.forEach(element => {
+                    if (element.topicID === currentID) {
+                        filter.push(element)
+                    }
+                });
+                setFilteredComments(filter);
+            })
     }, [currentID]);
 
 
@@ -37,7 +54,7 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
                 "content-type": "application/json",
                 "accept": "application/json",
                 "x-access-token": "",
-                "origin": "https://dat4semsecurity.surge.sh"
+                "origin": + headerOrigin
             }
         })
             .then(res => res.json())
@@ -86,7 +103,7 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
                 //'Content-Type': 'multipart/form-data',
                 //'X-Requested-With': 'XMLHttpRequest',
                 "x-access-token": "",
-                "origin": "https://dat4semsecurity.surge.sh"
+                "origin": headerOrigin
 
             },
             body: JSON.stringify({
