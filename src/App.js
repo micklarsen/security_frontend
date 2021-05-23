@@ -13,7 +13,7 @@ const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
   return (
     <>
       <Navbar bg="dark" variant="dark" id="header">
-        <Navbar.Brand href="/">DAT4SEM Security</Navbar.Brand>
+        <Navbar.Brand as={NavLink} to="/">DAT4SEM Security</Navbar.Brand> {/* Skal fixes da man bliver logget ud */}
         <Nav className="mr-auto">
 
           <NavLink className="nav-link" exact activeClassName="selected" href="/" to="/">

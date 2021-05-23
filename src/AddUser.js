@@ -23,7 +23,8 @@ const AddUser = () => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        email: document.getElementById("userName").value,
+        email: document.getElementById("userEmail").value,
+        username: document.getElementById("userName").value,
         password: document.getElementById("userPassword").value,
         phone: document.getElementById("userPhone").value,
         firstName: document.getElementById("userFirstName").value,
@@ -56,7 +57,7 @@ const AddUser = () => {
           <Col>
             <h2 className="ca3White">Sign up</h2>
             <Form className="mt-4">
-              <Form.Group controlId="userName">
+              <Form.Group controlId="userEmail">
                 {userCreated === "created" ? (
                   <div className="alert alert-success" role="alert">
                     You've created a user, login above.
@@ -64,9 +65,15 @@ const AddUser = () => {
                 ) : (
                   ""
                 )}
-                <Form.Label className="ca3White">Username (email)</Form.Label>
+                <Form.Label className="ca3White">email</Form.Label>
+                <Form.Control type="text" placeholder="Enter email" />
+              </Form.Group>
+
+              <Form.Group controlId="userName">
+                <Form.Label className="ca3White">Username</Form.Label>
                 <Form.Control type="text" placeholder="Enter username" />
               </Form.Group>
+
               <Form.Group controlId="userPassword">
                 <Form.Label className="ca3White">Password</Form.Label>
                 <Form.Control type="password" placeholder="Enter password" />

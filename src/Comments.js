@@ -19,13 +19,17 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
 
     function parseJwtName(name) {
         let tokenName = JSON.parse(atob(name.split('.')[1]));
+        return tokenName.userAlias;
+    }
+    function parseJwtEmail(name) {
+        let tokenName = JSON.parse(atob(name.split('.')[1]));
         return tokenName.username;
     }
 
     const [filteredComments, setFilteredComments] = useState(null);
     const [fileName, setFileName] = useState("Choose image");
     const [fileError, setFileError] = useState('');
-
+    
     useEffect(() => {
         fetchComments();
     }, [currentID]);
@@ -36,8 +40,8 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
             headers: {
                 "content-type": "application/json",
                 "accept": "application/json",
-                "x-access-token": "",
-                "origin": "https://dat4semsecurity.surge.sh"
+                // "x-access-token": "",
+                // "origin": "https://dat4semsecurity.surge.sh"
             }
         })
             .then(res => res.json())
@@ -85,14 +89,14 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
                 'Content-Type': 'application/json',
                 //'Content-Type': 'multipart/form-data',
                 //'X-Requested-With': 'XMLHttpRequest',
-                "x-access-token": "",
-                "origin": "https://dat4semsecurity.surge.sh"
+                // "x-access-token": "",
+                // "origin": "https://dat4semsecurity.surge.sh"
 
             },
             body: JSON.stringify({
                 userComment: document.getElementById("Comment").value,
                 topicID: currentID,
-                userName: parseJwtName(facade.getToken()),
+                userName: parseJwtEmail(facade.getToken()),
                 imageID: finishedImage
             })
         }
@@ -155,7 +159,7 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
                                     Delete
                                 </Button>
                                 : ''}
-                            {(isLoggedIn && (isLoggedIn && (data.userEmail === parseJwtName(facade.getToken())))) ?
+                            {(isLoggedIn && (isLoggedIn && (data.userName === parseJwtName(facade.getToken())))) ?
                                 <Button onClick={editComment} value={data.id} variant="warning" type="submit" size="sm" className="mb-2">
                                     edit
                                 </Button>
