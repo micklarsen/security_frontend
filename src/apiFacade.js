@@ -48,7 +48,7 @@ function apiFacade() {
         "authorization": "",
         "accept" : "application/json",
         "x-access-token" : "",
-        "origin" : "http://localhost:3000"
+        "origin" : "https://dat4semsecurity.surge.sh"
       },
     };
     if (addToken && loggedIn()) {
