@@ -12,7 +12,7 @@ export const allComments = domain + port + app + "/api/comments/all";
 export const deleteAComment = domain + port + app + "/api/comments/delete/";
 export const editAComment = domain + port + app + "";
 export const postAComment = domain + port + app + "/api/comments"; 
-export const addFriend = domain + port  + app + "/api/info";  */
+export const addFriend = domain + port  + app + "/api/info"; */
 
 
 /* LIVE ENVIRONMENT */

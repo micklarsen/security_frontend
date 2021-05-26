@@ -107,7 +107,7 @@ function Login({ setLoginStatus, isLoggedIn, setAdminStatus }) {
 
   function parseJwtName(name) {
     let tokenName = JSON.parse(atob(name.split('.')[1]));
-    return tokenName.username;
+    return tokenName.userAlias;
   }
 
   const [errorMessage, setErrorMessage] = useState('')
