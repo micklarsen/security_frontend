@@ -40,8 +40,8 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
             headers: {
                 "content-type": "application/json",
                 "accept": "application/json",
-                // "x-access-token": "",
-                // "origin": "https://dat4semsecurity.surge.sh"
+                "x-access-token": "",
+                "origin": "https://dat4semsecurity.surge.sh"
             }
         })
             .then(res => res.json())
@@ -89,8 +89,8 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
                 'Content-Type': 'application/json',
                 //'Content-Type': 'multipart/form-data',
                 //'X-Requested-With': 'XMLHttpRequest',
-                // "x-access-token": "",
-                // "origin": "https://dat4semsecurity.surge.sh"
+                "x-access-token": "",
+                "origin": "https://dat4semsecurity.surge.sh"
 
             },
             body: JSON.stringify({

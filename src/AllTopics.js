@@ -10,7 +10,7 @@ import { Navbar } from "react-bootstrap";
 
 
 const AllTopics = () => {
-   
+
     return (
         <div>
             <div className="topicContainer">

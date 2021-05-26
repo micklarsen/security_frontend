@@ -43,8 +43,8 @@ function LogIn({ login }) {
 
 
               <Form.Group>
-                <Form.Label>Username</Form.Label>
-                <Form.Control type="text" id="username" placeholder="Enter username" />
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="text" id="username" placeholder="Enter email" />
               </Form.Group>
               <Form.Group >
                 <Form.Label>Password</Form.Label>

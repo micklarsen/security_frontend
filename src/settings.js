@@ -1,4 +1,4 @@
-const domain = "https://micklarsen.com/"; 
+const domain = "https://micklarsen.com/";
 /* const domain = "http://localhost:"; */
 
 
@@ -17,8 +17,8 @@ export const addFriend = domain + port  + app + "/api/info"; */
 
 /* LIVE ENVIRONMENT */
 export const URL = domain + app;
-export const allComments = domain + app + "/api/comments/all"; 
+export const allComments = domain + app + "/api/comments/all";
 export const deleteAComment = domain + app + "/api/comments/delete/";
 export const editAComment = domain + app + "";
 export const postAComment = domain + app + "/api/comments";
-export const addFriend = domain + app + "/api/info"; 
+export const addFriend = domain + app + "/api/info";
