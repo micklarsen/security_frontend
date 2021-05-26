@@ -7,8 +7,6 @@ import Login from "./Login";
 import { Switch, Route, NavLink, useHistory } from "react-router-dom";
 import AllComments from "./Comments";
 
-
-
 const Header = ({ isLoggedIn, loginMsg, isAdmin, loginName }) => {
   return (
     <>
@@ -115,12 +113,15 @@ export default function App() {
 // in your app.
 
 function Home() {
+  useEffect(() => {
+    document.title = "Dat4SemSecurity";
+  }, []);
   return (
     <div className="pageContent">
       <h2>Home</h2>
       <p>Welcome to this humble site for discussions. <br />
       In the <NavLink exact activeClassName="selected" to="/topics">
-            topics
+          topics
         </NavLink> page you can participate in discussions within certain, pre-selected subjects.<br />
       Please note, that a user is required in order to comment and post pictures (No other files allowed!)
       </p>
