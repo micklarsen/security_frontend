@@ -1,12 +1,6 @@
 import React from 'react';
-//import { Container, Row, Col, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { Navbar } from "react-bootstrap";
-
-
-//const imgURL = "http://localhost:8080/4SEM_Security/api/comments/4";
-
-
 
 
 const AllTopics = () => {

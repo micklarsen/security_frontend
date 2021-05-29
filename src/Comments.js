@@ -3,8 +3,6 @@ import { useLocation } from 'react-router-dom'
 import { Form, Button, Col } from "react-bootstrap";
 import { allComments, deleteAComment, postAComment } from './settings'
 import facade from "./apiFacade";
-//import imageToBase64 from 'image-to-base64/browser';
-// const imageToBase64 = require('image-to-base64');
 
 const Comments = ({ isLoggedIn, isAdmin }) => {
 
@@ -87,8 +85,6 @@ const Comments = ({ isLoggedIn, isAdmin }) => {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                //'Content-Type': 'multipart/form-data',
-                //'X-Requested-With': 'XMLHttpRequest',
                 "x-access-token": "",
                 "origin": "https://dat4semsecurity.surge.sh"
 
